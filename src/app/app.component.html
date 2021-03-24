@@ -1,0 +1,74 @@
+<form [formGroup]="userProfileForm" (ngSubmit)="onSubmit()">
+
+  <div class="container" formGroupName="department">
+
+   
+    <div formArrayName='employees'>
+      <h3>Enter the Employee Details</h3>
+      <div class="form-group" *ngFor="let emp of employees.controls; let i = index">
+        <!-- {{emp.value | json}} -->
+        <div [formGroupName]="i">
+          <div class="form-group">
+            <label>Enter Employee Id :</label>
+
+            <input class="form-control" formControlName="id" type="text" placeholder="Enter id">
+
+          </div>
+          <!-- <div class="alert alert-danger" *ngIf="!emp.get('id')!.hasError('required') ">
+              
+                Enter Employee Id
+            
+            </div> -->
+          <div class="form-group">
+            <label>Enter Employee Name:</label>
+
+            <input class="form-control" formControlName="name" type="text" placeholder="Enter name">
+
+          </div>
+          <!-- <div class="alert alert-danger" *ngIf="!getid!.valid && (getid!.dirty ||getid!.touched)">
+              <div *ngIf="getid!.errors?.required">
+                Enter Employee name
+              </div>
+            </div> -->
+          <div class="form-group">
+            <label>Enter Employee Mail:</label>
+
+            <input class="form-control" formControlName="email" type="text" placeholder="Enter email">
+
+          </div>
+          <!-- <div class="alert alert-danger" *ngIf="!getid!.valid && (getid!.dirty ||getid!.touched)">
+              <div *ngIf="getid!.errors?.required">
+                Enter Employee mail
+              </div>
+            </div> -->
+          <div class="form-group">
+            <label>Enter Employee Address:</label>
+
+            <input class="form-control" formControlName="address" type="text" placeholder="Enter address">
+
+          </div>
+          <!-- <div class="alert alert-danger" *ngIf="!getid!.valid && (getid!.dirty ||getid!.touched)">
+              <div *ngIf="getid!.errors?.required">
+                Enter Address
+              </div>
+            </div> -->
+
+        </div>
+
+      </div>
+    </div>
+    
+      
+      <div class="form-group">
+        <label for="sel1">Select Department Name:</label>
+        <select class="form-control" id="sel1" name="sellist1" formControlName="name">
+      
+        <option class="form-control">--Select--</option>
+        <option class="form-control" *ngFor="let dept of Dept;let i =index">{{dept.name}}</option>
+      </select>
+    </div>
+    
+    <button type="submit" class="btn btn-default" [disabled]="!userProfileForm.valid">submit</button>
+
+  </div>
+</form>
